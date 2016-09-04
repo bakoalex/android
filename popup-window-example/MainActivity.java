@@ -23,8 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         if (v.getId()==R.id.btnShowPopup) {
+            //Rendszertől elkérni a LayoutInflater service-et.
             LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+            //popupView számára feldújni az xml-ben található layoutout
             View popupView = layoutInflater.inflate(R.layout.popup, null);
+            //popUpWindow létrehozása, majd annak paramétereinek beállítása
             final PopupWindow popupWindow = new PopupWindow(popupView, DrawerLayout.LayoutParams.WRAP_CONTENT, DrawerLayout.LayoutParams.WRAP_CONTENT);
 
             Button btnDismiss = (Button) popupView.findViewById(R.id.btnPopUpOk);
@@ -34,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
                     popupWindow.dismiss();
                 }
             });
-
+            
+            //A popup window a btnShow gombhoz képest hogyan jelenjen meg koordintákban megadva
             popupWindow.showAsDropDown(btnShow, 50, -30);
         }
     }
